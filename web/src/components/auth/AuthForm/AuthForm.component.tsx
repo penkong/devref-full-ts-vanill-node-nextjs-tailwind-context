@@ -52,10 +52,12 @@ export const AuthForm: FC<IPassingProps> = ({
         )}
         <FormButton text="Login" />
       </form>
-      <RedirectButton
-        href={register ? '' : s.register}
-        text={register ? s.back : s.goRegister}
-      />
+      <div className="mt-5">
+        <RedirectButton
+          href={register ? '' : s.register}
+          text={register ? s.back : s.goRegister}
+        />
+      </div>
     </AuthView>
   )
 }

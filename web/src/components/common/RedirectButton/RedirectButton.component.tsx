@@ -20,7 +20,7 @@ export const RedirectButton: FC<IPassingProps> = ({ href, text }) => {
     <>
       <div className="flex flex-col justify-center items-center text-center sm:text-left whitespace-nowrap">
         <Link href={href}>
-          <span className="transition duration-200 px-5 py-4 cursor-pointer font-normal text-lg rounded-lg text-white bg-green-400 hover:bg-gray-800 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+          <span className="transition mt-9 duration-200 px-5 py-4 cursor-pointer font-normal text-lg rounded-lg text-white bg-green-400 hover:bg-gray-800 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

@@ -6,7 +6,7 @@ export default function RegisterPage() {
   return (
     <main>
       <CardItem>
-        <AuthHoc route="register">{renderLogin}</AuthHoc>
+        <AuthHoc route="login">{renderLogin}</AuthHoc>
       </CardItem>
     </main>
   )

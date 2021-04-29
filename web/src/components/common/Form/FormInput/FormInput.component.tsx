@@ -27,7 +27,7 @@ export const FormInput: FC<IPassingProps> = ({
 }) => {
   return (
     <>
-      <label className="font-semibold text-sm text-gray-600 pb-1 block">
+      <label className="font-semibold text-xl text-gray-600 pb-3 block">
         {label.trim()}
       </label>
       <input
@@ -40,7 +40,7 @@ export const FormInput: FC<IPassingProps> = ({
         type={type}
         min={type == 'password' ? 4 : ''}
         max={type == 'password' ? 20 : ''}
-        className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+        className="border rounded-lg px-4 py-3 mt-2 mb-5 text-xl w-full"
       />
     </>
   )
