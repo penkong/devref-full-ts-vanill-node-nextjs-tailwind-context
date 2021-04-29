@@ -53,7 +53,13 @@ export const PersonCard: FC<IPassingProps> = ({
             <GithubIcon hBig="12" wBig="12" />
           </a>
           <span className="cursor-pointer ">
-            <EmailIcon />
+            <a
+              href={`mailto:${email}?subject=${
+                encodeURIComponent('From DevRef Viewer') || ''
+              }&body=${''}`}
+            >
+              <EmailIcon />
+            </a>
           </span>
           <a href={web} target="_blank">
             <GlobeIcon />

@@ -68,7 +68,7 @@ services:
       - /app/node_modules
       - ../web:/app
     environment: 
-      - NEXT_PUBLIC_ROUTE=http://localhost:3000
+      - NEXT_PUBLIC_ROUTE=http://localhost:5002
     ports: 
       - 3000:3000
 

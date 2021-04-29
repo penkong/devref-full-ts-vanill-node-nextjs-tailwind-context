@@ -51,12 +51,16 @@ export const register = async (
         new Date().getTime() + 86409000
       ).toUTCString()}`
     )
-    res.writeHead(201, { 'Content-Type': 'application/json' })
+    res.writeHead(201, {
+      'Content-Type': 'application/json'
+    })
     res.write(JSON.stringify([userRefine(user, userJwt)]))
     res.end()
     return
   } catch (error) {
-    res.writeHead(400, { 'Content-Type': 'application/json' })
+    res.writeHead(400, {
+      'Content-Type': 'application/json'
+    })
     res.write(JSON.stringify([{ message: error.message }]))
     res.end()
     return

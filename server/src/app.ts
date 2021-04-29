@@ -1,5 +1,6 @@
 import http, { IncomingMessage, ServerResponse } from 'http'
 
+import { cors } from './util'
 import { Router } from './routes'
 import { UrlRefiner } from './service/'
 import { CookieSessionRequest } from './@types'
@@ -16,7 +17,7 @@ declare global {
 
 export const app = http.createServer(
   (req: IncomingMessage, res: ServerResponse) => {
-    //
+    cors(res)
 
     if (req.url == undefined) return res.end()
 
