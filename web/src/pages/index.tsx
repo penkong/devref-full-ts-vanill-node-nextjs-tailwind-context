@@ -1,10 +1,14 @@
-import { CardItem, Banner } from '@components'
+import { Banner, CardItem, RedirectButton } from '@components'
 
 export default function Home() {
   return (
     <main>
       <Banner dayq="Younited States Of Ready BoilerPlates!" />
-      <CardItem></CardItem>
+      <CardItem>
+        <div>
+          <RedirectButton text="Login / Signup" href="/register" />
+        </div>
+      </CardItem>
     </main>
   )
 }

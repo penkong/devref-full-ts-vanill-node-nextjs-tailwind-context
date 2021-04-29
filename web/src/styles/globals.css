@@ -8,6 +8,12 @@
   font-style: normal;
 } */
 
+@layer utilities {
+  .h-978 {
+    height: 978px;
+  }
+}
+
 html {
   --black: #393939;
   /* --red: #ff0000;
