@@ -32,7 +32,7 @@ services:
 
 
   #
-  api:
+  apiauth:
     build: 
       context: ../server
       dockerfile: Dockerfile.dev
@@ -55,6 +55,23 @@ services:
       - JWT_TTL=365d
     ports: 
       - 5002:5002
+
+  front: 
+    build:
+      context: ../web
+      dockerfile: Dockerfile.dev
+    restart: always
+    stdin_open: true
+    depends_on: 
+      - apiauth
+    volumes: 
+      - /app/node_modules
+      - ../web:/app
+    environment: 
+      - NEXT_PUBLIC_ROUTE=http://localhost:3000
+    ports: 
+      - 3000:3000
+
 
 volumes: 
   pgvol:
