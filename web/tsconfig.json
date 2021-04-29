@@ -25,6 +25,7 @@
     "**/*.tsx",
     "**/*.js",
     "src/**/*.tsx",
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/components/store/auth.context.tss"
   ]
 }

@@ -2,9 +2,15 @@
  ** Description :
  */
 
-import { Banner, CardItem, RedirectButton } from '@components'
+import { useContext } from 'react'
+
+import { AuthContext, Banner, CardItem, RedirectButton } from '@components'
+
+// ---
 
 export default function Home() {
+  const ctxAuth = useContext(AuthContext)
+  console.log(ctxAuth)
   return (
     <main>
       <Banner dayq="Younited States Of Ready BoilerPlates!" />
