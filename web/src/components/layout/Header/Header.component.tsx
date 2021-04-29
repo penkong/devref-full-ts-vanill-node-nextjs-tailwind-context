@@ -6,8 +6,6 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { SearchIcon } from '@components'
-
 export const Header = () => (
   <nav>
     <div className="w-full h-40 mx-auto flex flex-row flex-wrap justify-evenly items-center space-x-4 md:space-x-8">
@@ -16,9 +14,6 @@ export const Header = () => (
           DFullTsVNodeNexTail
         </a>
       </Link>
-      <div className="flex relative flex-row justify-between items-center sm:hidden w-1/12 ml-10">
-        <SearchIcon big fillColor="#4d5ad9" />
-      </div>
       <div className="min-w-4/12 w-6/12 sm:w-3/12 h-3/5 flex flex-row justify-around items-center">
         <Link href="/aboutus">
           <a className="hover:text-indigo-300 cursor-pointer">About us</a>
