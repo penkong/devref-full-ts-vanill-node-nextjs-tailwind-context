@@ -41,7 +41,9 @@ export const AuthHoc: React.FC<IAuthHOCProps> = ({ children, route }) => {
       )
       console.log(res)
     } catch (error) {
-      console.log(error.message)
+      let sl = JSON.parse(JSON.stringify(error.response))
+      console.log(sl.data[0])
+      console.log(sl.status)
     }
     return
     // if (!formState) return

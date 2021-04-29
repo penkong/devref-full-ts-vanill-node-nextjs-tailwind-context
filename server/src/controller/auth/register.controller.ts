@@ -61,8 +61,8 @@ export const register = async (
     res.writeHead(400, {
       'Content-Type': 'application/json'
     })
-    res.write(JSON.stringify([{ message: error.message }]))
-    res.end()
+    // res.write()
+    res.end(JSON.stringify([{ message: error.message }]))
     return
   }
 }
