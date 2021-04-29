@@ -1,0 +1,5 @@
+export * from './SearchIcon/SearchIcon.component'
+export * from './GithubIcon/GithubIcon.component'
+export * from './StarIcon/StarIcon.component'
+export * from './EmailIcon/EmailIcon.component'
+export * from './GlobeIcon/GlobeIcon.component'

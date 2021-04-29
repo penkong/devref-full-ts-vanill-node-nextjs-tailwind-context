@@ -1,0 +1,10 @@
+.aaa {
+  color: red;
+  font-size: 2rem;
+  /* width: clamp(45ch, 50%, 75ch); */
+  /* hsl */
+  @apply mt-16 w-44 ml-12 bg-red-200;
+  /* &:hover {
+    color: rebeccapurple;
+  } */
+}
