@@ -1,3 +1,7 @@
+/*
+ ** Description :
+ */
+
 import { Banner, CardItem, RedirectButton } from '@components'
 
 export default function Home() {

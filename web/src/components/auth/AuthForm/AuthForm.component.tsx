@@ -54,7 +54,7 @@ export const AuthForm: FC<IPassingProps> = ({
       </form>
       <div className="mt-5">
         <RedirectButton
-          href={register ? '' : s.register}
+          href={register ? 'login' : s.register}
           text={register ? s.back : s.goRegister}
         />
       </div>

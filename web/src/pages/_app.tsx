@@ -1,4 +1,8 @@
-import { AppContext, AppInitialProps, AppProps } from 'next/app'
+/*
+ ** Description :
+ */
+
+import { AppProps } from 'next/app'
 import '../styles/globals.css'
 
 interface IPassingProps {

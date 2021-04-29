@@ -1,3 +1,7 @@
+/*
+ ** Description :
+ */
+
 import { PersonCard } from '@components'
 
 export default function AboutUs() {

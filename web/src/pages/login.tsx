@@ -1,3 +1,7 @@
+/*
+ ** Description :
+ */
+
 import { AuthForm, CardItem, AuthHoc, IChildrenAuthProps } from '@components'
 
 export default function RegisterPage() {

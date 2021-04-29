@@ -19,7 +19,7 @@ import { IAuthHOCProps, IAuthProps } from './AuthHoc.interface'
 export const AuthHoc: React.FC<IAuthHOCProps> = ({ children, route }) => {
   //
 
-  const [formState, setFormState] = useState<IAuthProps | null>(null)
+  const [formState, setFormState] = useState<IAuthProps>()
 
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -32,11 +32,13 @@ export const AuthHoc: React.FC<IAuthHOCProps> = ({ children, route }) => {
   const onAuthSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    // if (formState.confirmPassword != formState.password) return
+    if (!formState) return
 
-    // route === 'register'
-    // ? dispatch(AuthRegisterStartAction(formState))
-    // : dispatch(AuthLogInStartAction(formState))
+    if (formState.confirmPassword != formState.password) return
+
+    route === 'register' ? console.log('register') : console.log('login')
+    // dispatch(AuthRegisterStartAction(formState))
+    // dispatch(AuthLogInStartAction(formState))
   }
 
   return children({

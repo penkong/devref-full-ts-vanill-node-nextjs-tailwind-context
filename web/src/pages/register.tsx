@@ -1,12 +1,20 @@
+/*
+ ** Description :
+ */
+
 import { AuthForm, CardItem, AuthHoc, IChildrenAuthProps } from '@components'
 
 export default function RegisterPage() {
-  const renderLogin = (props: IChildrenAuthProps) => <AuthForm {...props} />
+  //
+
+  const renderRegister = (props: IChildrenAuthProps) => (
+    <AuthForm {...props} register />
+  )
 
   return (
     <main>
       <CardItem>
-        <AuthHoc route="register">{renderLogin}</AuthHoc>
+        <AuthHoc route="register">{renderRegister}</AuthHoc>
       </CardItem>
     </main>
   )
