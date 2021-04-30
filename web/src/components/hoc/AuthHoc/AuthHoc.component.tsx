@@ -36,10 +36,12 @@ export const AuthHoc: React.FC<IAuthHOCProps> = ({ children, route }) => {
     console.log(process.env.NEXT_PUBLIC_ROUTE)
     try {
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_ROUTE}/api/v1/auth/register`,
-        { email: 'fdsf@fdsfsd.com', password: 'sdfsdfsdfsdfs' }
+        `${process.env.NEXT_PUBLIC_ROUTE}/api/v1/auth/login`,
+        { email: 'fdsf@fdsfsd.com', password: 'sdfsdfsdfsdfs' },
+        { withCredentials: true }
       )
-      console.log(res)
+      console.log(res.data)
+      console.log(document.cookie)
     } catch (error) {
       let sl = JSON.parse(JSON.stringify(error.response))
       console.log(sl.data[0])

@@ -1,2 +1,2 @@
-export * from './alreadyIn.middleware'
+export * from './isAlreadyIn.middleware'
 export * from './getUser.middleware'

@@ -38,12 +38,16 @@ export async function login(
       },
       JWT_KEY!
     )
+    const ip = res.socket!.remoteAddress
+    const port = res.socket!.remotePort
+    console.log(ip)
+    console.log(port)
 
     res.setHeader(
       'Set-cookie',
       `vanillajwt=${userJwt};path=/;expires=${new Date(
         new Date().getTime() + 86409000
-      ).toUTCString()}`
+      ).toUTCString()};samesite=Strict`
     )
 
     res.writeHead(201, { 'Content-Type': 'application/json' })

@@ -49,8 +49,9 @@ export const register = async (
       'Set-cookie',
       `vanillajwt=${userJwt};path=/;expires=${new Date(
         new Date().getTime() + 86409000
-      ).toUTCString()}`
+      ).toUTCString()};secure=false`
     )
+
     res.writeHead(201, {
       'Content-Type': 'application/json'
     })
@@ -61,8 +62,8 @@ export const register = async (
     res.writeHead(400, {
       'Content-Type': 'application/json'
     })
-    // res.write()
-    res.end(JSON.stringify([{ message: error.message }]))
+    res.write(JSON.stringify([{ message: error.message }]))
+    res.end()
     return
   }
 }

@@ -21,6 +21,8 @@ export const AuthCtxProvider: FC = ({ children }) => {
 
   useEffect(() => {
     currentUser()
+
+    return () => {}
   }, [])
 
   const passingCtx = { ...ctx, user }

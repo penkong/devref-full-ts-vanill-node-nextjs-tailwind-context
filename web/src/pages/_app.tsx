@@ -5,8 +5,10 @@
 import '../styles/globals.css'
 
 import { AppProps } from 'next/app'
+import { CookiesProvider } from 'react-cookie'
 
 import { AuthCtxProvider } from '@components'
+import { useEffect } from 'react'
 
 // ---
 
@@ -17,10 +19,13 @@ interface IPassingProps {
 // ---
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {}, [])
   return (
-    <AuthCtxProvider>
-      <Component {...pageProps} />
-    </AuthCtxProvider>
+    <CookiesProvider>
+      <AuthCtxProvider>
+        <Component {...pageProps} />
+      </AuthCtxProvider>
+    </CookiesProvider>
   )
 }
 
