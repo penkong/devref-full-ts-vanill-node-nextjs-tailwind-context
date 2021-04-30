@@ -5,9 +5,6 @@
 import { useContext } from 'react'
 
 import { AuthContext, Banner, CardItem, RedirectButton } from '@components'
-import cookie from 'cookie'
-import { NextPageContext } from 'next'
-import { IncomingMessage } from 'http'
 // ---
 
 export default function Home() {
@@ -23,17 +20,4 @@ export default function Home() {
       </CardItem>
     </main>
   )
-}
-
-export function parseCookies(req: IncomingMessage) {
-  return cookie.parse(req ? req.headers.cookie || '' : document.cookie)
-}
-
-Home.getInitialProps = async ({ req }: NextPageContext) => {
-  const data = parseCookies(req!)
-
-  console.log(data, 'hrerere')
-  return {
-    data: data && data
-  }
 }
