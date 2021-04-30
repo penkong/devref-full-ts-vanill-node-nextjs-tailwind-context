@@ -38,10 +38,6 @@ export async function login(
       },
       JWT_KEY!
     )
-    const ip = res.socket!.remoteAddress
-    const port = res.socket!.remotePort
-    console.log(ip)
-    console.log(port)
 
     res.setHeader(
       'Set-cookie',
@@ -63,3 +59,8 @@ export async function login(
     return
   }
 }
+
+// const ip = res.socket!.remoteAddress
+// const port = res.socket!.remotePort
+// console.log(ip)
+// console.log(port)
