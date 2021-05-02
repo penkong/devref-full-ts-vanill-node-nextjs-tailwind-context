@@ -1,4 +1,7 @@
-import { FC, createContext, useState, useEffect, useContext } from 'react'
+import { FC, createContext, useState, useContext } from 'react'
+
+import { AuthService } from '@services'
+import { IAuthProps } from '@components/hoc'
 
 // initiation
 export const AuthContext = createContext({})
@@ -10,21 +13,32 @@ const useAuthProvider = () => {
     user: {
       id: '',
       email: ''
-    }
+    },
+    error: ''
   })
 
   // we add logic here
 
-  const register = () => {
+  const register = async ({ email, password }: IAuthProps) => {
     console.log('register')
   }
-  const login = () => {
+
+  const login = async ({ email, password }: IAuthProps) => {
     console.log('login')
+
+    try {
+      const data = await AuthService.loginClient(email, password)
+
+      setCurrent(data)
+    } catch (error) {
+      setCurrent(error)
+    }
   }
-  const logout = () => {
+
+  const logout = async () => {
     console.log('logout')
   }
-  const currentUser = () => {
+  const currentUser = async () => {
     console.log('currentUser')
   }
 

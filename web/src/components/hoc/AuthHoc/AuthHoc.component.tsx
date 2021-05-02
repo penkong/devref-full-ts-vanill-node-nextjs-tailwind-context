@@ -2,19 +2,9 @@
  ** Description :
  */
 
-import getConfig from 'next/config'
-
-import axios from 'axios'
-
 import React, { ChangeEvent, useState, FormEvent } from 'react'
 
 import { IAuthHOCProps, IAuthProps } from './AuthHoc.interface'
-
-// ---
-
-// const {
-//   publicRuntimeConfig: { apiRoute }
-// } = getConfig()
 
 // ---
 

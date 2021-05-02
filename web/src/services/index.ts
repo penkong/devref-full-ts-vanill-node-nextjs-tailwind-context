@@ -1,1 +1,1 @@
-export const fd5 = 'dfsdf'
+export * from './Auth.service'

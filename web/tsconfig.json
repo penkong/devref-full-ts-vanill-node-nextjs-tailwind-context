@@ -26,6 +26,6 @@
     "**/*.js",
     "src/**/*.tsx",
     "src/**/*.ts",
-    "src/components/store/auth.context.tss"
+    "src/components/context/auth.context.tss"
   ]
 }
