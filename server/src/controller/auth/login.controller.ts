@@ -53,7 +53,7 @@ export async function login(
     return
   } catch (error) {
     res.writeHead(400, { 'Content-Type': 'application/json' })
-    res.write(JSON.stringify([{ message: error.message }]))
+    res.write(JSON.stringify([{ status: 400, message: error.message }]))
     res.end()
 
     return

@@ -4,13 +4,14 @@
 
 import React, { ChangeEvent, useState, FormEvent } from 'react'
 
-import { IAuthHOCProps, IAuthProps } from './AuthHoc.interface'
+import { useAuth, IAuthHOCProps, IAuthProps, AuthContext } from '@components'
+import { useContext } from 'react'
 
 // ---
 
 export const AuthHoc: React.FC<IAuthHOCProps> = ({ children, route }) => {
   //
-
+  const { login } = useAuth()
   const [formState, setFormState] = useState<IAuthProps>()
 
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,30 +24,10 @@ export const AuthHoc: React.FC<IAuthHOCProps> = ({ children, route }) => {
 
   const onAuthSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
-    fetch('/api/login', {
-      method: 'POST',
-
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include',
-      body: JSON.stringify({
-        email: 'fdsf@fdsfsd.com',
-        password: 'sdfsdfsdfsdfs'
-      })
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data)
-      })
-
-      .catch(error => {
-        console.error('Error:', error)
-      })
-
-    return
+    login({ email: 'fsdfdsfsd@fdsfdsf', password: 'sdfsdfsdfsfs' })
+    // await sl.login('fdsfsdf@gsdfdsfsd.com', 'dfdsfsddsfdfsdf')
   }
+
   return children({
     onChangeInput,
     onAuthSubmit
