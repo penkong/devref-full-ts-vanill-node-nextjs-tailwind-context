@@ -1,6 +1,11 @@
 export class AuthService {
-  static async login() {}
-  static async logout() {}
-  static async register() {}
-  static async() {}
+  static async loginClient() {}
+  static async logoutClient() {}
+  static async registerClient() {}
+  static async currentUserClient() {}
+
+  static async loginNextApi() {}
+  static async logoutNextApi() {}
+  static async registerNextApi() {}
+  static async currentUserNextApi() {}
 }

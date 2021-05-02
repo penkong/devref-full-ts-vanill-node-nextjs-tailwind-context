@@ -1,33 +1,42 @@
-import { FC, createContext, useState, useEffect } from 'react'
+import { FC, createContext, useState, useEffect, useContext } from 'react'
 
-const ctx = {
-  user: {
-    id: '',
-    email: '',
-    token: ''
-  },
-  register: () => {},
-  login: () => {},
-  logout: () => {}
-}
+// initiation
+export const AuthContext = createContext({})
 
-export const AuthContext = createContext(ctx)
+// logic for provider in auth
+const useAuthProvider = () => {
+  const [current, setCurrent] = useState({
+    status: '',
+    user: {
+      id: '',
+      email: ''
+    }
+  })
 
-export const AuthCtxProvider: FC = ({ children }) => {
   // we add logic here
-  const [user, setUser] = useState<typeof ctx.user>(ctx.user)
 
-  const currentUser = async () => {}
+  const register = () => {
+    console.log('register')
+  }
+  const login = () => {
+    console.log('login')
+  }
+  const logout = () => {
+    console.log('logout')
+  }
+  const currentUser = () => {
+    console.log('currentUser')
+  }
 
-  useEffect(() => {
-    currentUser()
-
-    return () => {}
-  }, [])
-
-  const passingCtx = { ...ctx, user }
-
-  return (
-    <AuthContext.Provider value={passingCtx}>{children}</AuthContext.Provider>
-  )
+  return { current, register, login, logout, currentUser }
 }
+
+// for root of project to wrap with .
+export const AuthProvider: FC = ({ children }) => (
+  <AuthContext.Provider value={useAuthProvider()}>
+    {children}
+  </AuthContext.Provider>
+)
+
+// for in component consumption
+export const useAuth = () => useContext(AuthContext)
