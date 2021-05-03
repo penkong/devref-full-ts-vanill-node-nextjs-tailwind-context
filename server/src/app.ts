@@ -32,8 +32,10 @@ export const app = http.createServer(
     const r = req.method + url.pathname
 
     if (r === validRoutes[0] || r === validRoutes[1])
-      if (isAlreadyIn(req))
+      if (isAlreadyIn(req)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
         return res.end(JSON.stringify([{ message: 'Already In' }]))
+      }
 
     Router.dispatch(url, req, res)
   }

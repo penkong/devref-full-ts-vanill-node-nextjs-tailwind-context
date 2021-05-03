@@ -14,11 +14,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     //
 
-    if (req.cookies.vanillajwt)
-      return res.json([{ message: 'Nextjs Says You Alreaedy Logged In!' }])
+    if (req.cookies.vanillajwt) {
+      res.writeHead(400, { 'Content-Type': 'application/json' })
+      res.write(
+        JSON.stringify([
+          { status: 400, message: 'Nextjs Says You Alreaedy Logged In!' }
+        ])
+      )
+      return res.end()
+      // return res.json([
+      //   { status: 400, message: 'Nextjs Says You Alreaedy Logged In!' }
+      // ])
+    }
 
-    if (!req.body || !req.body.email || !req.body.password)
-      return res.json([{ message: 'Need Info For Action' }])
+    if (!req.body || !req.body.email || !req.body.password) {
+      res.writeHead(400, { 'Content-Type': 'application/json' })
+      return res.json([{ status: 400, message: 'Need Info For Action' }])
+    }
 
     const { email, password } = req.body
 
@@ -46,6 +58,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.json(data)
     } catch (error) {
       console.log('Nextjs Server Error: ', error)
+      return res.json(error)
     }
   }
 }

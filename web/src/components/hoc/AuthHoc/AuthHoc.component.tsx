@@ -24,7 +24,10 @@ export const AuthHoc: React.FC<IAuthHOCProps> = ({ children, route }) => {
 
   const onAuthSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    login({ email: 'fsdfdsfsd@fdsfdsf', password: 'sdfsdfsdfsfs' })
+    login({
+      email: 'test455@test.com',
+      password: 'password123'
+    })
     // await sl.login('fdsfsdf@gsdfdsfsd.com', 'dfdsfsddsfdfsdf')
   }
 

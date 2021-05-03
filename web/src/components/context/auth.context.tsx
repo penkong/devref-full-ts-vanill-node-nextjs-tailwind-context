@@ -19,14 +19,14 @@ export interface IAuthCtx {
     error: string
   }
 
-  register(info: IAuthProps): void
-  login(info: IAuthProps): void
-  logout(): void
-  currentUser(): void
+  register: (info: IAuthProps) => void
+  login: (info: IAuthProps) => void
+  logout: () => void
+  currentUser: () => void
 }
 
 // initiation
-export const AuthContext = createContext({
+export const AuthContext = createContext<IAuthCtx>({
   current: {
     status: '',
     user: {
@@ -45,7 +45,16 @@ export const AuthContext = createContext({
 
 // logic for provider in auth
 const useAuthProvider = () => {
-  const [current, setCurrent] = useState({})
+  const [current, setCurrent] = useState({
+    status: '',
+    user: {
+      id: '',
+      pic: '',
+      email: '',
+      role: ''
+    },
+    error: ''
+  })
 
   // we add logic here
 
@@ -88,33 +97,34 @@ const useAuthProvider = () => {
 
     try {
       const data = await AuthService.login(email, password)
-      if (data[0].status == 400) {
-        setCurrent(() => ({
-          ...current,
-          status: 'ERROR',
-          user: {
-            id: '',
-            email: '',
-            pic: '',
-            role: ''
-          },
-          error: data[0].message
-        }))
-      }
-      console.log(current)
+      // if (data[0].status == 400) {
+      //   console.log('it touch here')
+      //   setCurrent(() => ({
+      //     ...current,
+      //     status: 'ERROR',
+      //     user: {
+      //       id: '',
+      //       email: '',
+      //       pic: '',
+      //       role: ''
+      //     },
+      //     error: data[0].message
+      //   }))
+      // } else {
       setCurrent({
         status: 'SIGNED_IN',
         user: {
-          id: data.id,
-          email: resEmail,
-          pic: pic || '',
-          role: role || 'SIMPLE_USER'
+          id: data[0].id,
+          email: data[0].email,
+          pic: data[0].pic || '',
+          role: data[0].role || 'SIMPLE_USER'
         },
         error: ''
       })
-      // console.log(current)
       // router.push('/landing')
+      // }
     } catch (error) {
+      console.log(JSON.stringify(JSON.parse(error)))
       console.log('From Auth Context Login', error)
     }
   }
@@ -157,7 +167,7 @@ const useAuthProvider = () => {
 
 // for root of project to wrap with .
 export const AuthProvider: FC = ({ children }) => (
-  <AuthContext.Provider value={useAuthProvider() as IAuthCtx}>
+  <AuthContext.Provider value={useAuthProvider()}>
     {children}
   </AuthContext.Provider>
 )

@@ -15,18 +15,27 @@ export class AuthService {
   }
 
   static async login(email: string, password: string) {
-    const resp = await fetch('/api/v1/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include',
-      body: JSON.stringify({
-        email,
-        password
+    try {
+      const resp = await fetch('/api/v1/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          email,
+          password
+        })
       })
-    })
-    return await resp.json()
+
+      if (!resp.ok)
+        // or check for response.status
+        throw new Error()
+      return await resp.json()
+    } catch (error) {
+      console.log(error)
+      console.log(JSON.parse(JSON.stringify(error)))
+    }
   }
 
   static async logout() {
