@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-depl
+  labels:
+    app: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web
+          # eval $(minikube docker-env)
+          # cd to service && docker build -t penkong/vanillanodemongo .
+          image: 'penkong/fullstackvanillanodepgnextjs:latest'
+          # imagePullPolicy: Never // if use local image
+          imagePullPolicy: Always
+          env:
+            - name: NEXT_PUBLIC_ROUTE
+              # <service-name>.<namespace>.svc.cluster.local:<service-port>
+              # fix this on startup
+              value: htfds
+
+          resources:
+            limits:
+              memory: '256Mi'
+              cpu: '500m'
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-srv
+spec:
+  selector:
+    app: web
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000

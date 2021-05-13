@@ -1,1 +1,46 @@
-# 
+version: '3.4'
+services:
+
+  nginx:
+
+  portainer:
+
+  redis:
+    environment:
+      # fix this 
+      - ALLOW_EMPTY_PASSWORD=yes
+
+  pg:
+    restart: always
+    environment:
+      # - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=${}
+      - POSTGRES_PASSWORD=${}
+      - PGPORT=${}
+
+  pgadmin:
+    environment: 
+      - PGADMIN_DEFAULT_EMAIL=${}
+      - PGADMIN_DEFAULT_PASSWORD=${}
+
+  apiauth:
+    image: penkong/vanillanodepg
+    environment:
+      - PORT=${}
+      - DBURL=${}
+      - DBNAME=vanillanodepg
+      - NODE_ENV=production
+      - PGPASS=${}
+      - PGUSER=${}
+      - CORS=http://${}:3000
+      - JWT_KEY=${}
+      - JWT_TTL=${}
+    ports: 
+      - ${}:${}
+  
+  front: 
+    build:
+      dockerfile: Dockerfile
+      image: penkong/fullstackvanillanodepgnextjs
+    environment: 
+      - NEXT_PUBLIC_ROUTE=http://apiauth:5002

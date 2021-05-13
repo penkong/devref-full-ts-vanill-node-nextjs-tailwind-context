@@ -40,3 +40,10 @@ spec:
                 name: mongo-express-srv
                 port:
                   number: 80
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: web-srv
+                port:
+                  number: 3000
